@@ -20,14 +20,13 @@ if (!isset($_SESSION['user_id'])) {
 body {
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #6b48ff 100%);
-    background-size: 200% 200%;
     animation: gradientFlow 15s ease infinite;
     margin: 0;
     padding: 0;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     color: #ffffff;
+    width: 94.5vw;
 }
 
 @keyframes gradientFlow {
@@ -52,7 +51,7 @@ header {
 }
 
 .navbar {
-    max-width: 1200px;
+    /* max-width: 1200px; */
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -60,6 +59,7 @@ header {
 }
 
 .logo img {
+    margin-left:100px;
     height: 40px;
     border-radius: 50%;
 }

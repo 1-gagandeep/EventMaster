@@ -47,15 +47,14 @@ if (isset($_POST['bride_name']) && isset($_POST['groom_name'])) {
 body {
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #6b48ff 100%);
-    background-size: 200% 200%;
     animation: gradientFlow 15s ease infinite;
     margin: 0;
     padding: 0;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     color: #ffffff;
+    width: 97.8vw;
 }
 
 @keyframes gradientFlow {
@@ -80,7 +79,7 @@ header {
 }
 
 .navbar {
-    max-width: 1200px;
+    /* max-width: 1200px; */
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -88,6 +87,7 @@ header {
 }
 
 .logo img {
+    margin-left:100px;
     height: 40px;
     border-radius: 50%;
 }
@@ -142,6 +142,7 @@ h2 {
     flex-grow: 1;
     transition: transform 0.3s ease;
     opacity: 0.92;
+    width: 94vw;
 }
 
 .container:hover {
@@ -241,13 +242,15 @@ button, .back-btn {
 footer {
     background: rgba(42, 82, 152, 0.9);
     color: white;
-    width: 100%;
+    width: 98%;
     padding: 2rem;
     text-align: center;
     font-size: 1.1em;
     font-weight: 600;
-    margin-top: auto;
+    /* margin-top: 30px; */
     border-radius: 12px 12px 0 0;
+    position: absolute;
+    bottom:0px;
 }
 
 .footer-links a {

@@ -1,234 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event Management</title>
-    <style>
-       body {
-            font-family: 'Arial', sans-serif;
-            background: url("background.webp") no-repeat center center fixed;
-            background-size: cover;
-            /* background-color: #BAD0CD; */
-            margin: 0;
-            padding: 0;
-        }
-
-        h2 {
-            text-align: center;
-            color: white;
-        }
-
-        h3 {
-            color: #BAD0CD;
-            text-align:center;
-        }
-
-        .form-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 40px;
-        }
-
-        .event-card {
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 80%;
-            margin-left: 120px;
-            opacity: 0.92;
-        }
-
-        .event-card strong {
-            color: #4CAF50;
-        }
-
-        .event-card p {
-            margin: 5px 0;
-            color: #555;
-        }
-
-        button[type="submit"] {
-            width: 100%;
-            padding: 10px;
-            background-color: #07675C;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.1em;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .alert {
-            text-align: center;
-            color: #4CAF50;
-            font-weight: bold;
-            margin-top: 20px;
-        }
-
-    </style>
-</head>
-<body>
-
-<?php
-// include 'db.php';
-
-
-// if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['event_id'])) {
-//     $event_id = $_POST['event_id'];
-//     $event_name = $_POST['event_name'];
-//     $event_date = $_POST['event_date'];
-//     $event_time = $_POST['event_time'];
-//     $venue = $_POST['venue'];
-//     $ticket_price = $_POST['ticket_price'];
-
-    
-//     $sql = "UPDATE events SET event_name = ?, event_date = ?, event_time = ?, venue = ?, ticket_price = ? WHERE event_id = ?";
-//     $con = $mysqli->prepare($sql);
-//     $con->bind_param("sssssi", $event_name, $event_date, $event_time, $venue, $ticket_price, $event_id); 
-//     $con->execute();
-
-//     echo "<div class='alert'>Event updated successfully!</div>";
-// }
-
-
-// $search_type = '';
-// $search_month = '';
-// $search_year = '';
-// $events = [];
-
-
-// if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-//     $search_type = $_GET['event_type'] ?? '';
-//     $search_month = $_GET['event_month'] ?? '';
-//     $search_year = $_GET['event_year'] ?? '';
-    
-    
-//     $sql = "SELECT * FROM events WHERE 1 = 1";
-//     $params = [];
-
-   
-//     if (!empty($search_type)) {
-//         $sql .= " AND event_type = ?";
-//         $params[] = $search_type;
-//     }
-    
-//     if (!empty($search_month) && !empty($search_year)) {
-//         $sql .= " AND MONTH(event_date) = ? AND YEAR(event_date) = ?";
-//         $params[] = $search_month;
-//         $params[] = $search_year;
-//     }
-
-    
-//     $con = $mysqli->prepare($sql);
-
-    
-//     if (!empty($params)) {
-        
-//         $types = str_repeat("s", count($params)); 
-//         $con->bind_param($types, ...$params);
-//     }
-
-//     $con->execute();
-//     $result = $con->get_result(); 
-
-    
-//     $events = $result->fetch_all(MYSQLI_ASSOC);
-// }
-
-
-// if (isset($_GET['event_id'])) {
-//     $event_id = $_GET['event_id'];
-//     $sql = "SELECT * FROM events WHERE event_id = ?";
-//     $con = $mysqli->prepare($sql);
-//     $con->bind_param("i", $event_id); 
-//     $con->execute();
-//     $result = $con->get_result();
-//     $event_to_edit = $result->fetch_assoc(); 
-// }
-?>
-
-    <h2>Event Management</h2>
-
-    <!-- Event Update Form -->
-    <!-- <?php if (isset($event_to_edit)): ?>
-        <div class="form-container">
-            <h3>Edit Event</h3>
-            <form method="POST">
-                <input type="hidden" name="event_id" value="<?php echo $event_to_edit['id']; ?>">
-                <label>Event Name:</label>
-                <input type="text" name="event_name" value="<?php echo htmlspecialchars($event_to_edit['event_name']); ?>" required><br>
-                
-                <label>Date:</label>
-                <input type="date" name="event_date" value="<?php echo htmlspecialchars($event_to_edit['event_date']); ?>" required><br>
-                
-                <label>Time:</label>
-                <input type="time" name="event_time" value="<?php echo htmlspecialchars($event_to_edit['event_time']); ?>" required><br>
-                
-                <label>Venue:</label>
-                <input type="text" name="venue" value="<?php echo htmlspecialchars($event_to_edit['venue']); ?>" required><br>
-                
-                <label>Ticket Price:</label>
-                <input type="number" step="0.01" name="ticket_price" value="<?php echo htmlspecialchars($event_to_edit['ticket_price']); ?>" required><br>
-                
-                <button type="submit">Update Event</button>
-            </form>
-        </div>
-    <?php endif; ?> -->
-
-    <!-- Event Search Form -->
-    <!-- <div class="form-container">
-        <h3>Search Events</h3>
-        <form method="GET" action="">
-            <label for="event_type">Event Type:</label>
-            <input type="text" name="event_type" id="event_type" value="<?php echo htmlspecialchars($search_type); ?>">
-
-            <label for="event_month">Month:</label>
-            <select name="event_month" id="event_month">
-                <option value="">Select Month</option>
-                <?php
-                for ($m = 1; $m <= 12; $m++) {
-                    echo '<option value="' . $m . '"' . (($search_month == $m) ? ' selected' : '') . '>' . date("F", mktime(0, 0, 0, $m, 1)) . '</option>';
-                }
-                ?>
-            </select>
-
-            <label for="event_year">Year:</label>
-            <input type="number" name="event_year" id="event_year" min="2000" max="<?php echo date("Y"); ?>" value="<?php echo htmlspecialchars($search_year); ?>">
-
-            <button type="submit">Search</button>
-        </form>
-    </div> -->
-
-    <!-- Display Event Search Results -->
-    <!-- <div class="event-container">
-        <h3>Event Search Results</h3>
-        <?php if (!empty($events)): ?>
-            <?php foreach ($events as $row): ?>
-                <div class="event-card">
-                    <strong>Event Name:</strong> <p><?php echo htmlspecialchars($row['event_name']); ?></p>
-                    <strong>Date:</strong> <p><?php echo htmlspecialchars($row['event_date']); ?></p>
-                    <strong>Time:</strong> <p><?php echo htmlspecialchars($row['event_time']); ?></p>
-                    <strong>Venue:</strong> <p><?php echo htmlspecialchars($row['venue']); ?></p>
-                    <strong>Organizer:</strong> <p><?php echo htmlspecialchars($row['organizer_name']); ?></p>
-                    <strong>Ticket Price:</strong> <p>$<?php echo htmlspecialchars($row['ticket_price']); ?></p>
-                    <strong>Available Seats:</strong> <p><?php echo htmlspecialchars($row['available_seats']); ?></p>
-                    <strong>Event Type:</strong> <p><?php echo htmlspecialchars($row['event_type']); ?></p>
-                </div>
-            <?php endforeach; ?>
-        <?php else: ?>
-            <div class="event-card">
-                <p>No events found for the selected criteria.</p>
-            </div>
-        <?php endif; ?>
-    </div>
-
-</body>
-</html> --> 
-
 <?php
 include 'db.php';
 
@@ -306,15 +75,14 @@ if (isset($_GET['event_id'])) {
 body {
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #6b48ff 100%);
-    background-size: 200% 200%;
     animation: gradientFlow 15s ease infinite;
     margin: 0;
     padding: 0;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     color: #ffffff;
+    width: 96.8vw;
 }
 
 /* Smooth gradient animation */
@@ -340,7 +108,7 @@ header {
 }
 
 .navbar {
-    max-width: 1200px;
+    /* max-width: 1200px; */
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -348,6 +116,7 @@ header {
 }
 
 .logo img {
+    margin-left:100px;
     height: 40px;
     border-radius: 50%;
 }
@@ -391,16 +160,16 @@ h2 {
 }
 
 /* Events Section */
-.events-container {
+.event-container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center; /* Centers event cards */
-    align-items: center;
-    padding: 20px;
-    gap: 20px;
+flex-direction: row;
+flex-wrap: wrap; 
+justify-content: center; 
+align-items: center; 
+padding: 20px;
+gap: 20px;
 }
 
-/* Event Cards */
 .event-card {
     background: rgba(42, 82, 152, 0.9);
     border-radius: 12px;
@@ -472,7 +241,7 @@ footer {
     text-align: center;
     font-size: 1.1em;
     font-weight: 600;
-    margin-top: auto;
+    margin-top: 30px;
     border-radius: 12px 12px 0 0;
 }
 
@@ -579,7 +348,7 @@ footer {
     </header>
 
     <!-- Main Content -->
-    <h2>Event Management</h2>
+    <h2>Event Master</h2>
 
     <?php if (isset($update_success)): ?>
         <div class="alert">Event updated successfully!</div>
@@ -629,7 +398,6 @@ footer {
 
     <!-- Display Event Search Results -->
     <div class="event-container">
-        <h3>Event Search Results</h3>
         <?php if (!empty($events)): ?>
             <?php foreach ($events as $row): ?>
                 <div class="event-card">

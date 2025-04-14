@@ -387,6 +387,7 @@ footer {
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
     transform: scale(0.9);
     animation: modalPop 0.4s ease-out forwards;
+   scrollbar-width:none;
 }
 
 @keyframes fadeInModal {
@@ -543,19 +544,19 @@ footer {
             <button class="close-btn" id="closeEventModal">×</button>
             <h2>Plan an Event</h2>
             <form class="event-form" method="POST" action="">
-                <label for="fullName">Full Name</label>
+                <!-- <label for="fullName">Full Name</label> -->
                 <input type="text" id="fullName" name="fullName" placeholder="Your Full Name" required>
 
-                <label for="email">Email</label>
+                <!-- <label for="email">Email</label> -->
                 <input type="email" id="email" name="email" placeholder="Your Email" required>
 
-                <label for="phone">Phone</label>
+                <!-- <label for="phone">Phone</label> -->
                 <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" required>
 
-                <label for="address">Address</label>
+                <!-- <label for="address">Address</label> -->
                 <textarea id="address" name="address" placeholder="Your Address" required></textarea>
 
-                <label for="eventType">Event Type</label>
+                <!-- <label for="eventType">Event Type</label> -->
                 <select id="eventType" name="eventType" required>
                     <option value="">Select Event Type</option>
                     <option value="Wedding">Wedding</option>
@@ -565,10 +566,10 @@ footer {
                     <option value="Other">Other</option>
                 </select>
 
-                <label for="estimatePrice">Estimated Price (₹)</label>
+                <!-- <label for="estimatePrice">Estimated Price (₹)</label> -->
                 <input type="number" id="estimatePrice" name="estimatePrice" placeholder="Estimated Price" min="0" required>
 
-                <label for="numPersons">Number of Persons</label>
+                <!-- <label for="numPersons">Number of Persons</label> -->
                 <input type="number" id="numPersons" name="numPersons" placeholder="Number of Persons" min="1" required>
 
                 <button type="submit">Submit Event Request</button>
